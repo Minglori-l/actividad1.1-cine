@@ -31,6 +31,7 @@ class FuncionController {
 
         res.json(funcionesFiltradas);
     }
+    
     // Eliminar relación entre entidades (Función y Película)
     desvincularPelicula(req, res) {
         const idFuncion = parseInt(req.params.id);

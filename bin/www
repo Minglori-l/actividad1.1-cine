@@ -5,7 +5,7 @@
  */
 
 var app = require('../app');
-var debug = require('debug')('actividad1.1-cine:server');
+var debug = require('debug')('api-cine:server');
 var http = require('http');
 
 /**
