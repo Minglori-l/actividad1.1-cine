@@ -1,9 +1,9 @@
 class PeliculaController {
     constructor() {
         this.peliculas = [
-            { id: 1, titulo: "Inception", director: "Christopher Nolan", año: 2010 },
-            { id: 2, titulo: "Interstellar", director: "Christopher Nolan", año: 2014 },
-            { id: 3, titulo: "The Matrix", director: "Lana Wachowski", año: 1999 }
+            { id: 1, titulo: "Yo antes de ti", director: "Thea Sharrock", año: 2016 },
+            { id: 2, titulo: "Diario de una pasión", director: "Nick Cassavetes", año: 2004 },
+            { id: 3, titulo: "Violet y Finch", director: "Brett Haley", año: 2020 }
         ];
     }
 
