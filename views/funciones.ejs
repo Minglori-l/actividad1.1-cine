@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lista de Funciones</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+<body>
+    <h1>Funciones Programadas</h1>
+    
+    <table border="1" cellpadding="10">
+        <thead>
+            <tr>
+                <th>ID Función</th>
+                <th>ID Película</th>
+                <th>Sala</th>
+                <th>Fecha</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% funciones.forEach(function(funcion) { %>
+                <tr>
+                    <td><%= funcion.id %></td>
+                    <td><%= funcion.peliculaId ? funcion.peliculaId : 'Sin asignar' %></td>
+                    <td><%= funcion.sala %></td>
+                    <td><%= funcion.fecha %></td>
+                </tr>
+            <% }); %>
+        </tbody>
+    </table>
+
+    <br>
+    <a href="/">Volver al inicio</a>
+</body>
+</html>
