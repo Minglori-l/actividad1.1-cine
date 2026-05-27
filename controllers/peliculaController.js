@@ -11,50 +11,42 @@ class PeliculaController {
         res.json(this.peliculas);
     }
 
-    // NUEVO: Buscar por ID
+    // Buscar por ID
     buscarPorId(req, res) {
-        // Obtenemos el ID de la URL y lo convertimos a número
         const id = parseInt(req.params.id); 
         
-        // Buscamos en el array usando la función find() de JavaScript
         const pelicula = this.peliculas.find(p => p.id === id);
 
         if (pelicula) {
-            res.json(pelicula); // Si existe, la devolvemos
+            res.json(pelicula);
         } else {
-            res.status(404).json({ mensaje: "Película no encontrada" }); // Error 404 si no existe
+            res.status(404).json({ mensaje: "Película no encontrada" });
         }
     }
 
-    // NUEVO: Agregar una película (POST)
+    // Agregar una película
     agregar(req, res) {
-        const datosRecibidos = req.body; // Aquí viene la info desde el cliente
+        const datosRecibidos = req.body;
 
-        // Generamos un ID automático (el ID de la última película + 1)
         const nuevoId = this.peliculas.length > 0 ? this.peliculas[this.peliculas.length - 1].id + 1 : 1;
         
-        // Creamos el nuevo objeto combinando el ID y los datos recibidos
         const nuevaPelicula = { id: nuevoId, ...datosRecibidos };
 
-        // Lo agregamos a nuestro array en memoria
         this.peliculas.push(nuevaPelicula);
 
-        // Respondemos con status 201 (Creado)
         res.status(201).json({ 
             mensaje: "Película agregada con éxito", 
             pelicula: nuevaPelicula 
         });
     }
-    // NUEVO: Modificar una película (PUT)
+    // Modificar una película
     editar(req, res) {
         const id = parseInt(req.params.id);
         const datosActualizados = req.body;
         
-        // Buscamos el índice (la posición) de la película en el array
         const index = this.peliculas.findIndex(p => p.id === id);
 
         if (index !== -1) {
-            // Si existe, reemplazamos sus datos pero conservamos su ID original
             this.peliculas[index] = { id: id, ...datosActualizados };
             res.json({ 
                 mensaje: "Película actualizada con éxito", 
@@ -65,40 +57,36 @@ class PeliculaController {
         }
     }
 
-    // NUEVO: Eliminar una película (DELETE)
+    // Eliminar una película
     eliminar(req, res) {
         const id = parseInt(req.params.id);
         const index = this.peliculas.findIndex(p => p.id === id);
 
         if (index !== -1) {
-            // splice corta elementos de un array. Aquí quitamos 1 elemento en la posición 'index'
             this.peliculas.splice(index, 1);
             res.json({ mensaje: "Película eliminada correctamente" });
         } else {
             res.status(404).json({ mensaje: "Película no encontrada para eliminar" });
         }
     }
-    // NUEVO: Método para renderizar la vista EJS
+    // Método para renderizar la vista EJS
     vistaPeliculas(req, res) {
-        // res.render pide dos cosas: el nombre del archivo EJS (sin la extensión) y los datos que le vas a pasar
         res.render('peliculas', { 
             titulo: 'Cartelera de Cine', 
             peliculas: this.peliculas 
         });
     }
-    // NUEVO: Mostrar el formulario web
+    // Mostrar el formulario web
     vistaNuevaPelicula(req, res) {
         res.render('nueva-pelicula');
     }
 
-    // NUEVO: Procesar el formulario web y redireccionar
+    // Procesar el formulario web y redireccionar
     agregarDesdeWeb(req, res) {
         const datosRecibidos = req.body; 
 
-        // Misma lógica de generación de ID que hicimos en la API
         const nuevoId = this.peliculas.length > 0 ? this.peliculas[this.peliculas.length - 1].id + 1 : 1;
         
-        // Convertimos el año a número porque los formularios HTML envían todo como texto (String)
         const nuevaPelicula = { 
             id: nuevoId, 
             titulo: datosRecibidos.titulo,
@@ -108,10 +96,9 @@ class PeliculaController {
 
         this.peliculas.push(nuevaPelicula);
 
-        // En lugar de responder con JSON, redireccionamos a la página de la cartelera
         res.redirect('/cartelera');
     }
-    // NUEVO: Mostrar detalles de una película en la web
+    // Mostrar detalles de una película en la web
     vistaDetalle(req, res) {
         const id = parseInt(req.params.id);
         const pelicula = this.peliculas.find(p => p.id === id);

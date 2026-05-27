@@ -10,13 +10,13 @@ router.get('/', function(req, res, next) {
 
 router.get('/cartelera', (req, res) => peliculaController.vistaPeliculas(req, res));
 
-// NUEVA RUTA WEB: Mostrar el formulario (GET)
+// Mostrar el formulario (GET)
 router.get('/nueva-pelicula', (req, res) => peliculaController.vistaNuevaPelicula(req, res));
 
-// NUEVA RUTA WEB: Recibir los datos del formulario (POST)
+// Recibir los datos del formulario (POST)
 router.post('/agregar-pelicula', (req, res) => peliculaController.agregarDesdeWeb(req, res));
 
-// NUEVA RUTA WEB: Ver detalles de una película (GET)
+// Ver detalles de una película (GET)
 router.get('/pelicula/:id', (req, res) => peliculaController.vistaDetalle(req, res));
 
 router.get('/ver-funciones', (req, res) => funcionController.vistaFunciones(req, res));

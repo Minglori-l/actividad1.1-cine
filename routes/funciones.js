@@ -8,7 +8,7 @@ router.get('/ultimas', (req, res) => funcionController.ultimasCinco(req, res));
 // Ruta para filtrar por fechas (GET /api/funciones/fechas?inicio=...&fin=...)
 router.get('/fechas', (req, res) => funcionController.filtrarPorFecha(req, res));
 
-// NUEVA RUTA: Romper relación (PUT /api/funciones/:id/desvincular-pelicula)
+// Romper relación (PUT /api/funciones/:id/desvincular-pelicula)
 router.put('/:id/desvincular-pelicula', (req, res) => funcionController.desvincularPelicula(req, res));
 
 module.exports = router;
