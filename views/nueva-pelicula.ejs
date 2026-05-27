@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Agregar Película</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+<body>
+    <h1>Añadir Nueva Película al Sistema</h1>
+    
+    <form action="/agregar-pelicula" method="POST">
+        <div>
+            <label for="titulo">Título:</label><br>
+            <input type="text" id="titulo" name="titulo" required>
+        </div>
+        <br>
+        <div>
+            <label for="director">Director:</label><br>
+            <input type="text" id="director" name="director" required>
+        </div>
+        <br>
+        <div>
+            <label for="año">Año de Estreno:</label><br>
+            <input type="number" id="año" name="año" required>
+        </div>
+        <br>
+        <button type="submit">Guardar Película</button>
+    </form>
+
+    <br>
+    <a href="/cartelera">Volver a la cartelera</a>
+</body>
+</html>
